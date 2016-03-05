@@ -1,0 +1,13 @@
+[RECV] null://localhost:28421//badge?bid=JIzpLA
+[RECV] null://localhost:28421//badge?bid=8K1uQg
+[RECV] null://localhost:28421//badge?bid=dsi2sA
+[RECV] null://localhost:28421//badge?bid=pW52dg
+[RECV] null://localhost:28421//badge?bid=EYpBeA
+[RECV] null://localhost:28421//badge?bid=a1%2FEpA
+[RECV] null://localhost:28421//badge?bid=lwWEOA
+[RECV] null://localhost:28421//badge?bid=WEq2yw
+[RECV] null://localhost:28421//badge?bid=Kmm%2B7w
+[RECV] null://localhost:28421//badge?bid=Q1FRrA
+[RECV] null://localhost:28421//badge?bid=%2FHB4Cg
+[RECV] null://localhost:28421//badge?bid=lUnWrQ
+[RECV] null://localhost:28421//badge?bid=oDDqqg
