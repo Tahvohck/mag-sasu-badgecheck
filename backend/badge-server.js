@@ -34,7 +34,31 @@ var apiopts		= {
  * PROGRAM *
  ***********/
 var version = '0.2a'
+
+function dLog (message) {
+	if (verbose) { console.log(message)}
+}
+
 function serverMain (requ, resp) {
+	var rURL = 'http://' + requ.headers.host + requ.url
+	dLog('[RECV] ' + requ.method + ' ' + rURL)
+
+	switch (requ.method){
+		case 'GET':
+			resp.writeHead(501, 'ERROR: no implemented methods to ' + requ.method)
+			resp.end()
+			break
+		case 'POST':
+		case 'PUT':
+		case 'PATCH':
+		case 'DELETE':
+			resp.writeHead(501, 'ERROR: no implemented methods to ' + requ.method)
+			resp.end()
+			dLog('[ERRO] Not sure how to ' + requ.method)
+			break
+		default:
+			console.log("[ERRO] Don't know method " + requ.method)
+	}
 }
 
 var server = http.createServer(serverMain)
@@ -42,4 +66,4 @@ server.listen(listenPort)
 
 console.log('--Badgecheck backend ' + version + ' init complete--')
 console.log('Listening on ' + server.address().address + ':' + server.address().port)
-server.close()
+//server.close()
