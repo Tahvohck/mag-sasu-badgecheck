@@ -40,13 +40,12 @@ function dLog (message) {
 }
 
 function serverMain (requ, resp) {
-	var rURL = 'http://' + requ.headers.host + requ.url
-	dLog('[RECV] ' + requ.method + ' ' + rURL)
+	var reqURL = url.parse('http://' + requ.headers.host + requ.url, true)
+	dLog('[RECV] ' + reqURL.href)
 
 	switch (requ.method){
 		case 'GET':
-			resp.writeHead(501, 'ERROR: no implemented methods to ' + requ.method)
-			resp.end()
+			handleGET(requ, resp, reqURL)
 			break
 		case 'POST':
 		case 'PUT':
@@ -59,6 +58,25 @@ function serverMain (requ, resp) {
 		default:
 			console.log("[ERRO] Don't know method " + requ.method)
 	}
+}
+
+// GET Primary logic
+// Passed: Request URL, Response stream
+function handleGET (requ, resp, reqURL) {
+	var splitpath = reqURL.pathname.toLowerCase().split('/').slice(1)
+
+	switch (splitpath[0]){
+		case 'badge':
+			break
+		case 'echo':
+			resp.writeHead(200, 'OK')
+			resp.end(JSON.stringify(reqURL, null, 2))
+			break
+		default:
+			resp.writeHead(404, 'Unable to get resource')
+			resp.end('404: Resource [' + reqURL.href + '] not found')
+	}
+	resp.writeHead(501, 'ERROR: no implemented methods to ' + requ.method)
 }
 
 var server = http.createServer(serverMain)
